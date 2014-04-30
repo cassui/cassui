@@ -1,22 +1,17 @@
-package com.impetus.ilabs.cassui
+package com.cassui
 
-import org.apache.thrift.transport.TSocket;
 import org.apache.cassandra.thrift.Cassandra;
 import org.apache.cassandra.thrift.KeyRange;
 import org.apache.cassandra.thrift.SlicePredicate;
-import org.apache.cassandra.thrift.SliceRange;
-import org.apache.cassandra.thrift.ColumnOrSuperColumn;
+import org.apache.cassandra.thrift.SliceRange
 import org.apache.cassandra.thrift.ColumnParent;
-import org.apache.cassandra.thrift.ConsistencyLevel;
-import org.apache.cassandra.thrift.KeySlice;
+import org.apache.cassandra.thrift.ConsistencyLevel
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
-import org.apache.thrift.transport.TTransportException;
-import org.apache.cassandra.thrift.CfDef;
-import org.apache.cassandra.thrift.InvalidRequestException;
+import org.apache.thrift.transport.TTransport
+import org.apache.cassandra.thrift.CfDef
 import org.apache.cassandra.thrift.KsDef;
 import org.apache.cassandra.thrift.AuthenticationRequest;
 import org.apache.cassandra.thrift.AuthenticationException;
