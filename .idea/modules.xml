@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cassui.iml" filepath="$PROJECT_DIR$/cassui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cassui-grailsPlugins.iml" filepath="$PROJECT_DIR$/cassui-grailsPlugins.iml" />
     </modules>
   </component>
 </project>

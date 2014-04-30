@@ -2,6 +2,7 @@ package com.cassui
 
 class Server {
 	
+	String cassandraCluster
 	String cassandraURL
 	String cassandraVersion = "0.6.4"
 	String adminLogin
@@ -33,6 +34,7 @@ class Server {
 	}
 
     static constraints = {
+    	cassandraCluster(nullable:true)
 		cassandraURL()
 		cassandraVersion(inList:["0.6.4","0.7"])
 		adminLogin(nullable:true)

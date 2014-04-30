@@ -57,12 +57,14 @@ class CassService {
 	}	
 	
 	
-	def getServerInfo(server,int port, login,passwd,def exactKeyspace=null){
+	def getServerInfo(server,def exactKeyspace=null){
 		def serverInfo = [:]
 		Cassandra.Client cassandraClient
 		try {
-			cassandraClient = getClient(server,port,login,passwd);
+			cassandraClient = getClient(server.getServer(),server.getPort(),server.getAdminLogin(),server.getAdminPassword());
 			serverInfo["clusterName"] = cassandraClient.describe_cluster_name();
+			server["cassandraCluster"] = serverInfo["clusterName"]
+
 			def keyspaces = [:]
 			for(KsDef keyspaceObj: cassandraClient.describe_keyspaces()) {
 			   String keyspace = keyspaceObj.getName();
@@ -267,13 +269,14 @@ class CassService {
 	}
 	
 	
-	def getServerInfo(server,int port,def exactKeyspace=null){
+	def getServerInfo(server,def exactKeyspace=null){
 		def serverInfo = [:]
-		def socket=getSocket(server,port);
+		def socket=getSocket(server.getServer(),server.getPort());
 		def cassandraClient = getCassandaraClient(socket)
 		try {
             socket.open();
 			serverInfo["clusterName"] = cassandraClient.get_string_property("cluster name")
+			server["cassandraCluster"] = serverInfo["clusterName"]
 			def keyspaces = [:]
 			for (String keyspace : cassandraClient.describe_keyspaces()) {
                 // Ignore system column family

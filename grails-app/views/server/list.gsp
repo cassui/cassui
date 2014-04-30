@@ -21,6 +21,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <g:sortableColumn property="cassandraCluster" title="${message(code: 'server.cassandraCluster.label', default: 'Cassandra Cluster')}" />
                             <g:sortableColumn property="cassandraURL" title="${message(code: 'server.cassandraURL.label', default: 'Cassandra URL')}" />
                             <g:sortableColumn property="cassandraVersion" title="${message(code: 'server.cassandraVersion.label', default: 'Cassandra Version')}" />
                         </tr>
@@ -28,6 +29,7 @@
                     <tbody>
                     <g:each in="${serverInstanceList}" status="i" var="serverInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                            <td><g:link action="show" id="${serverInstance.id}">${fieldValue(bean: serverInstance, field: "cassandraCluster")}</g:link></td>
                             <td><g:link action="show" id="${serverInstance.id}">${fieldValue(bean: serverInstance, field: "cassandraURL")}</g:link></td>
                             <td>${fieldValue(bean: serverInstance, field: "cassandraVersion")}</td>
                         </tr>

@@ -16,7 +16,7 @@ class ServerController {
 			return
 		}
 		def server = Server.get(params.id)
-		def serverInfo=cassService.getServerInfo(server.getServer(),server.getPort(),server.getAdminLogin(),server.getAdminPassword())
+		def serverInfo=cassService.getServerInfo(server)
 		def keyspace = serverInfo.keyspaces[params.keyspace]
 		params.colDetails = serverInfo.keyspaces.get(params.keyspace).get(params.colFamily)
 		params.keySlices=[:]
@@ -30,7 +30,7 @@ class ServerController {
 			return
 		}
 		def server = Server.get(params.id)
-		def serverInfo=cassService.getServerInfo(server.getServer(),server.getPort(),server.getAdminLogin(),server.getAdminPassword())
+		def serverInfo=cassService.getServerInfo(server)
 		def tables=[]
 		serverInfo.keyspaces[params.keyspace]?.each{keyspacestemp->
 			tables.add(keyspacestemp.key)
@@ -88,9 +88,9 @@ class ServerController {
 		//println serverInstance.cassandraURL
         def serverInfo
 		if (params.keyspace){
-			serverInfo = cassService.getServerInfo(serverInstance.getServer(),serverInstance.getPort(),serverInstance.getAdminLogin(),serverInstance.getAdminPassword(),params.keyspace)
+			serverInfo = cassService.getServerInfo(serverInstance,params.keyspace)
 		} else {
-			serverInfo = cassService.getServerInfo(serverInstance.getServer(),serverInstance.getPort(),serverInstance.getAdminLogin(),serverInstance.getAdminPassword())
+			serverInfo = cassService.getServerInfo(serverInstance)
 		}
         
 		if (!serverInstance) {
