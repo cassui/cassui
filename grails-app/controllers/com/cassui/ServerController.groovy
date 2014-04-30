@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.impetus.ilabs.cassui
+package com.cassui
 
 
 class ServerController {
